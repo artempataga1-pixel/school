@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>GPT Image 2.5 по твоим фото | Урок 5 · Артём Патага</title>
+<meta name="description" content="Урок 5 от Артёма Патаги: готовые английские промпты для GPT Image 2.5 в ChatGPT. Работа с фото-референсами, раскадровки, карусели, персонажи.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--soft:#F2F5FA;--ink:#0B1220;--muted:#6B7A90;--accent:#1E8CFF;--line:#E2E8F1;--warn:#FFF4E5}
+@media (prefers-color-scheme:dark){:root{--bg:#070B14;--soft:#101828;--ink:#F4F7FB;--muted:#93A0B8;--line:#1E2A42;--warn:#2A2112}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:12px;height:56px}
+header.top img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:top}
+header.top b{font-weight:800}header.top span{color:var(--muted);font-size:14px}
+header.top a{margin-left:auto;color:var(--accent);font-weight:600;text-decoration:none}
+.hero{padding:44px 0 28px;display:grid;grid-template-columns:1fr 260px;gap:32px;align-items:center}
+.kick{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1.5px solid var(--accent);border-radius:99px;padding:5px 12px}
+h1{font-size:clamp(30px,5vw,50px);line-height:1.06;letter-spacing:-.02em;margin:16px 0 14px;font-weight:800}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:560px;margin:0 0 20px}
+.author{display:flex;align-items:center;gap:12px;font-size:15px}
+.author img{width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top}
+.hero .photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;border-radius:20px;border:1px solid var(--line)}
+h2{font-size:28px;letter-spacing:-.01em;margin:46px 0 14px;font-weight:800}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.step{background:var(--soft);border-radius:16px;padding:18px}
+.step .n{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;align-items:center;justify-content:center;margin-bottom:8px}
+.note{background:var(--soft);border-left:5px solid var(--accent);border-radius:0 14px 14px 0;padding:14px 18px;margin:14px 0}
+.note.warn{background:var(--warn);border-left-color:#F59E0B}
+.tools{position:sticky;top:56px;z-index:4;background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chip{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:7px 14px;font:600 14px Inter;cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+#q{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 14px;font:400 15px Inter;background:var(--bg);color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:18px}
+.card{border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;background:var(--bg)}
+.card .cat{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.card h3{margin:6px 0 4px;font-size:18px}
+.card .att{color:var(--muted);font-size:14px;margin:0 0 10px}
+.card pre{margin:0 0 12px;white-space:pre-wrap;word-break:break-word;font:500 12.5px/1.5 "JetBrains Mono",monospace;background:var(--soft);border-radius:12px;padding:12px;max-height:260px;overflow:auto}
+.copy{margin-top:auto;border:0;background:var(--accent);color:#fff;border-radius:12px;padding:11px;font:700 14px Inter;cursor:pointer}
+.copy.done{background:#12B76A}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.gal img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:16px;border:1px solid var(--line)}
+.hw li{margin-bottom:8px}
+.cta{text-align:center;background:var(--soft);border-radius:24px;padding:40px 20px;margin:46px 0}
+.cta .word{display:inline-block;font-size:34px;font-weight:800;letter-spacing:.06em;color:var(--accent);border:3px solid var(--accent);border-radius:16px;padding:6px 30px;margin:14px 0}
+footer{color:var(--muted);font-size:13px;padding:10px 0 40px;text-align:center}
+.hidden{display:none!important}
+@media (max-width:760px){.hero{grid-template-columns:1fr}.hero .photo{max-width:260px}}
+</style></head>
+<body>
+<header class="top"><div class="wrap"><img src="img/author.webp" alt="Артём Патага"><b>Артём Патага</b><span>AXEN AI</span><a href="https://instagram.com/artem.pataga" rel="noopener">@artem.pataga</a></div></header>
+
+<main class="wrap">
+<section class="hero">
+  <div>
+    <span class="kick">урок 5 · фото по референсам</span>
+    <h1>GPT Image 2.5 по <em>твоим фото</em>: 38 готовых промптов</h1>
+    <p class="lead">Перенос эмоции, новая одежда и фон, постер с собой в главной роли, раскадровки, карусели, персонажи. Копируешь промпт, прикладываешь фото в ChatGPT, получаешь результат.</p>
+    <div class="author"><img src="img/author.webp" alt=""><div><b>Артём Патага</b><br><span style="color:var(--muted)">основатель AXEN AI · внедрение ИИ в бизнес</span></div></div>
+  </div>
+  <img class="photo" src="img/author.webp" alt="Артём Патага">
+</section>
+
+<h2>Как работать с референсами</h2>
+<div class="steps">
+  <div class="step"><div class="n">1</div><b>Загрузи фото</b><br>Нажми скрепку в ChatGPT и загрузи картинки в том порядке, в каком будешь на них ссылаться.</div>
+  <div class="step"><div class="n">2</div><b>Назови роли</b><br>В промпте картинки называются image 1, image 2, image 3. Первая загруженная это image 1.</div>
+  <div class="step"><div class="n">3</div><b>Скопируй промпт</b><br>Выбери нужный ниже, нажми «Скопировать» и вставь в чат вместе с фото.</div>
+  <div class="step"><div class="n">4</div><b>Правь кликом</b><br>Мелочи правь одной фразой, нажав на готовую картинку. Не начинай заново.</div>
+</div>
+<div class="note"><b>Одна фраза, которая спасает:</b> «Keep the person's face and appearance from image 1.» Добавляй её, когда на картинке человек.</div>
+<div class="note warn"><b>С чьими лицами можно работать.</b> Только свои фото или фото людей, которые согласились. Никаких фейковых снимков со знаменитостями и никаких «событий», которых не было, в рекламе и новостях. Для клиентских работ подписывай, что изображение сгенерировано ИИ.</div>
+
+<h2>Промпты</h2>
+<div class="tools"><div class="chips"><button class="chip on" data-cat="">Все</button><button class="chip" data-cat="Раскадровки">Раскадровки</button><button class="chip" data-cat="Карусели">Карусели</button><button class="chip" data-cat="Стили · мода">Стили · мода</button><button class="chip" data-cat="Сложные запросы">Сложные запросы</button><button class="chip" data-cat="Ты в новых образах">Ты в новых образах</button><button class="chip" data-cat="Реклама">Реклама</button><button class="chip" data-cat="Дизайн">Дизайн</button><button class="chip" data-cat="Рисованное">Рисованное</button><button class="chip" data-cat="Поза и скетч">Поза и скетч</button><button class="chip" data-cat="Необычные приёмы">Необычные приёмы</button><button class="chip" data-cat="Персонажи">Персонажи</button></div><input id="q" type="search" placeholder="Поиск по промптам: поза, фон, карусель, логотип…"></div>
+<div class="grid" id="grid">
+<article class="card" data-cat="Раскадровки"><div class="cat">Раскадровки</div><h3>Раскадровка по твоей идее</h3><p class="att">Приложи (по желанию): героя, одежду, предмет, локацию или стиль. Подставь свой сценарий и настройки в скобках.</p><pre>Create one clean cinematic storyboard sheet with short captions.
+
+SETTINGS
+Planned video length: [8-15 seconds]
+Number of keyframes: [9]
+Frame aspect ratio: [16:9 / 9:16 / 1:1]
+
+STORY
+[Paste your script, idea or short action here]
+
+REFERENCES
+Work out the role of each attached image yourself: character, outfit, object, product, location or style. Keep each referenced character&#x27;s face, build, outfit and accessories recognizable. Keep products and objects true to shape, color and material. Use a location reference for space, light and atmosphere. Use a style reference only for palette, grading and mood, never for its content. If there are no references, design the characters yourself and keep them identical in every frame.
+
+STORY STRUCTURE
+Make exactly the number of frames set above. Each frame shows one meaningful action, change, reaction or detail; together they read as one story, not as similar poses. For nine frames follow this arc: situation, hero or object, impulse, action begins, development, detail or reaction, change, climax, final image. Vary shot size and angle on purpose: wide, medium, close-up, macro, POV, over-the-shoulder, low and high angle. Do not add characters, objects, logos, speech bubbles or text that are not in the story.
+
+LAYOUT
+One sheet in an even grid (4 frames: 2x2, 6: 3x2, 9: 3x3, 12: 4x3). Every cell has the frame on top and a narrow caption bar directly below it with one short Russian caption of 4-10 words, starting with the frame number (&quot;1.&quot;, &quot;2.&quot; ...). Captions are large, sharp and fully legible. No other text on the sheet: no title, no text inside the frames, no logos, no watermarks. All cells the same size, aligned, even gutters, nothing cropped.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Раскадровки"><div class="cat">Раскадровки</div><h3>Раскадровка: история по картинке</h3><p class="att">Приложи одну картинку: персонаж, место, предмет или стиль. ChatGPT придумает историю сам.</p><pre>From the attached image, invent a strong, clear, original story for a short AI video of about 15 seconds, then draw a cinematic storyboard for it. Do not ask clarifying questions.
+
+First decide what the image is mainly about: a character, a location, an object, a product or a visual style, and build the story on that. The story must work without dialogue or on-screen text and have an emotional hook, one main action, one small unexpected turn and a strong final image. It must follow naturally from what is visible in the image.
+If the image shows a character, keep the face, age, build, hairstyle, clothing and mood. If it shows a product or object, keep its shape, color and material. If it shows a location, keep the space, time of day, light and palette. Do not add new main characters unless the story needs them.
+
+Write first, as plain text: 1) a one-sentence logline, 2) a 2-3 sentence story, 3) one sentence on why this story fits this image.
+
+Then create one clean storyboard sheet: 9 frames in a 3x3 grid, each frame 16:9 with a short Russian caption bar directly below it (4-10 words, a concrete action, starting with the frame number: &quot;1.&quot;, &quot;2.&quot; ...). Build the sequence like a director, not by formula: opening situation, detail or impulse, the hero&#x27;s decision, action begins, development, reaction or key detail, unexpected change, climax, final image. Every frame must be needed and differ in action, composition, shot size or state. Use wide, medium, close-up, macro, POV, low or high angles only when they strengthen the meaning. No other text on the sheet: no title, no text inside frames, no speech bubbles, logos or watermarks. Keep one consistent look taken from the reference.
+
+After the image, add a numbered list of the 9 frames, one line each: action, shot or angle, and a short camera move.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Раскадровки"><div class="cat">Раскадровки</div><h3>Девять ракурсов из одного фото</h3><p class="att">Приложи одно своё фото в полный рост или по пояс. Получишь сетку 3 на 3: одна и та же одежда и место, меняется только камера.</p><pre>Full-bleed 3x3 grid of nine photographs, edge to edge, minimal gaps, no text and no labels. The same person from the attached photo, the same outfit, the same location, the same light and color grade in all nine frames. Cinematic fashion photography with strong perspective: the frames differ only in camera height, distance, lens and crop, never in outfit or setting.
+Frame 1: extreme close-up of the face, camera slightly above eye level, shallow depth of field.
+Frame 2: side-profile medium close-up at eye level, clean silhouette.
+Frame 3: three-quarter medium shot from a low angle, upper body dominant.
+Frame 4: full-body wide shot from far back at eye level.
+Frame 5: low-angle legs-only shot near the ground, feet and calves in the foreground.
+Frame 6: waist-level close shot angled upward, hips and hands.
+Frame 7: over-the-shoulder close-up from behind, head partly turned to the camera.
+Frame 8: high-angle close shot from above, head and shoulders compressed diagonally.
+Frame 9: extreme close-up of a detail (eyes, hands or footwear texture), macro distance.
+High-fashion editorial look, clean grading, sharp where close, natural falloff in wide shots. Keep the person&#x27;s face and appearance identical in every frame.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Карусели"><div class="cat">Карусели</div><h3>Агент для обычной карусели</h3><p class="att">Вставь в чат, заполни project_data.</p><pre>You are a creative director, carousel designer and prompt writer for GPT Image. From the project data below, develop a production-ready carousel concept and the prompts to generate it slide by slide. Do not generate any images now.
+
+&lt;project_data&gt;
+Brand name:
+Company description:
+Positioning and tone:
+Target audience:
+Platform:
+Number of slides:
+Aspect ratio:
+Topic:
+Goal / short summary of the post:
+Facts and source material:
+Permanent signature or account:
+Logo (attached):
+Visual style:
+Must include:
+Must not include:
+&lt;/project_data&gt;
+
+Answer in this order.
+1. CREATIVE CONCEPT: main idea, visual metaphor, emotional effect, narrative logic, how attention is held from slide to slide.
+2. FIXED DESIGN SYSTEM, identical on every slide: aspect ratio, palette, background and textures, typography and text hierarchy, headline and body positions, line-break rules, logo position, signature position, slide-number style, progress-indicator style, recurring decorative and UI elements, grid, margins, alignment, forbidden changes. The logo and account name must be reproduced exactly from the references.
+3. SLIDE SCRIPT: for each slide its role, exact headline, exact supporting text, signature text, slide number, progress-indicator state, main visual scene, position of every element, and its link to neighboring slides. Do not overload slides with text; shorten wording if needed but keep the meaning.
+
+4. REFERENCE SLIDE: choose the slide that shows the whole design system best (typography, colors, style, logo, signature, progress indicator, repeating elements). It does not have to be the first slide.
+5. READY PROMPTS: one prompt for the reference slide and one for every other slide. Each prompt contains: the exact aspect ratio, the exact text in quotation marks and its exact position, the visual scene, logo and signature positions, slide number, progress-indicator state, recurring UI elements, the fixed design rules and a list of things that must not change. No vague words like &quot;make it beautiful&quot;; every instruction must be concrete.
+6. BATCH PROMPT for the third step: one request that generates all slides except the reference one. For each slide: an ID (CARD_01, CARD_02 ...), exact text, visual scene, composition, number, progress-indicator state, what differs from the reference and what must match it exactly. The batch prompt must require: every slide as a separate image and a separate file; no collage, grid or combined image; all images in one task; the approved reference slide as a strict visual reference; the aspect ratio from the concept; exact text only, no extra captions; no skipped slides; each result labeled with its ID.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Карусели"><div class="cat">Карусели</div><h3>Агент для бесшовной карусели</h3><p class="att">Бесшовная карусель это широкие развороты: одна картинка на два слайда, потом её разрезают пополам. При свайпе фон «перетекает» из слайда в слайд.</p><pre>You are a creative director and carousel designer who prepares prompts for GPT Image. Design a SEAMLESS carousel: a series of wide spreads where one image covers two neighboring slides. Each spread will later be cut in half, so each half must work as a complete slide on its own while the two halves read as one continuous scene. Do not generate images now.
+
+&lt;project_data&gt;
+Topic, goal, target audience, platform, number of slides, aspect ratio of one slide, spread format, facts, brand name, signature, logo, references, visual style, must include, must not include.
+&lt;/project_data&gt;
+If something is missing, fill it in sensibly from the topic.
+
+RULES
+- One slide is one final slide. One spread is one wide image for two slides. A 4:5 slide (1080x1350) means a spread of 8:5 (2160x1350).
+- The vertical center line is the future cut. Backgrounds, light, large shapes, silhouettes, textures, smoke, brush strokes and large objects may cross it.
+- Never put across the cut line: key words, small text, the logo, the slide number, the progress indicator, a close-up face, or any critical part of the composition. Keep a &quot;cut zone&quot; around the center free of small text.
+- Each half has its own safe zone and its own complete composition. Logo, signature, number and progress indicator belong to each individual slide and sit in the same place on every slide.
+- If the number of slides is odd, propose one solution: a standalone last slide, an asymmetric final spread, or a final spread with one real slide and one decorative ending.
+
+ANSWER IN THIS ORDER
+1. CREATIVE CONCEPT: main idea, visual metaphor, emotional effect, narrative logic, how the transition between slides works, what holds attention while swiping.
+2. FIXED DESIGN SYSTEM: everything a normal carousel needs (palette, textures, typography, positions of logo, signature, number and progress indicator, recurring elements, grid, margins, forbidden changes) plus safe zones and cut-zone rules.
+3. SPREAD ARCHITECTURE: for each spread (SPREAD_01 ...): which slides it holds (CARD_01 + CARD_02), its role, the shared seamless visual, what is in the left half, what is in the right half, what crosses the cut, and what must never sit on the cut.
+4. SLIDE SCRIPT: for each CARD_xx: its spread, role, exact headline, exact text, signature, number, progress-indicator state, scene, layout, link to the neighboring slide, and how it stands alone after the cut.
+5. REFERENCE SPREAD: choose one spread (not a single slide) that best shows the design system and the seamless transition, and explain why.
+6. READY PROMPTS: one for the reference spread and one for every other spread. Each states the spread aspect ratio, that it is one wide image for two slides, the IDs, the exact left and right text with exact positions, the shared visual, the left and right halves, how the visual crosses the center, a ban on important elements on the cut line, logo, signature, number and progress state per slide, the repeating UI elements, the fixed design rules, and that the image will be cut in half and each half must be a complete slide.
+7. BATCH PROMPT for all spreads except the reference: a separate wide image and a separate file per spread, no collage, everything in one task, the approved reference spread as a strict visual reference, exact text only, nothing skipped, IDs on the results, a seamless visual between the halves, no important text on the cut line.
+
+FORMAT: first a short summary of the idea, then all sections in order. Put every GPT Image prompt and the batch prompt in separate code blocks.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Стили · мода"><div class="cat">Стили · мода</div><h3>1. Tokyo neon (без референса)</h3><pre>Vogue-style editorial fashion photograph. A striking model in an oversized avant-garde transparent vinyl puffer jacket filled with glowing pink neon gas, posing on a rainy Tokyo street at night. Wet asphalt reflecting neon signs, cinematic dramatic light, natural detailed skin texture, 35mm lens, shallow depth of field, photorealistic. No readable text on the signs, no logos, no watermark.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Стили · мода"><div class="cat">Стили · мода</div><h3>2. Avant-garde medieval (без референса)</h3><pre>High-fashion editorial photograph of a fierce female model kneeling in a confident, dynamic pose. Avant-garde medieval fashion: a sleek dark steel corset, delicate chainmail accents, rich dark velvet. Vivid purple studio background with a huge glowing pink neon circle framing her silhouette from behind. Neon backlight, sharp focus, photorealistic. No text, no logos, no watermark.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Стили · мода"><div class="cat">Стили · мода</div><h3>3. Ты в готическом образе (приложи своё фото)</h3><pre>Preserve the facial features, proportions and expression of the person in the attached photo. Gothic aesthetic: dark hair with soft texture, dark expressive eyes, subtle dramatic makeup. Elegant black outfit: structured jacket, lace shirt, thin black tie, minimal metal accessories. Turned slightly sideways, head tilted down a little while looking straight into the camera, one hand adjusting the collar. Chest-up close-up, centered but slightly off-balance composition, neutral soft gray background. Soft diffused studio light, matte textures, natural skin texture. Realistic dark editorial portrait.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Сложные запросы"><div class="cat">Сложные запросы</div><h3>Длинное описание: толпа и детали</h3><p class="att">Проверка на внимательность: чем больше людей и надписей, тем важнее назвать каждого и каждую надпись. Все названия ниже вымышленные.</p><pre>Illustration, a large panoramic scene of a futuristic night street market with many characters and details. In the center: a young courier woman in a bright yellow jacket with reflective stripes, dark cargo pants, light-up sneakers and a translucent backpack printed with the words &quot;ЛУНА-ДОСТАВКА&quot;. Beside her an elderly tea seller in a long robe and cap pours tea from a metal kettle into glasses. On the left, street musicians: a young man in a leather jacket with a patch reading &quot;ВОСТОК&quot;, a woman in a long coat with a synthesizer, a drummer in a t-shirt; an open case at their feet holds coins and a sticker &quot;СПАСИБО&quot;. On the right, a fruit stall: a vendor in an apron arranges glowing fruit into wooden crates under a sign &quot;Сладкие кометы&quot;. In the crowd: a student with a backpack and headphones, a woman in a strict suit with a paper bag marked &quot;ПЕКАРНЯ&quot;, a teenager photographing with an old camera, a guard at the entrance. Scattered props: a bicycle, boxes, newspapers, a street lamp, a small service robot. On the back wall a poster: &quot;ДЖАЗ НА КРЫШЕ: СЕГОДНЯ&quot;. Setting: a narrow street between tall buildings, wet asphalt reflecting the lights. Light and mood: night neon, warm lamps, light fog, cinematic. Wide angle, panoramic composition, high detail, realistic textures, film-still look. Render every quoted text exactly and nowhere else.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Ты в новых образах"><div class="cat">Ты в новых образах</div><h3>4. Перенос эмоции и мимики</h3><p class="att">Приложи: 1) своё фото, 2) фото с нужной эмоцией.</p><pre>Make a photo of the man from image 1 with exactly the facial expression and mimic of the person in image 2. Keep his face, identity and his clothing from image 1. Vertical 2:3.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Ты в новых образах"><div class="cat">Ты в новых образах</div><h3>5. Замена внешности</h3><p class="att">Приложи: 1) референс позы, одежды и сцены, 2) своё фото.</p><pre>Image 1 is the reference photo, image 2 shows the person. Create a photorealistic photo of the man from image 2 in a pose as close as possible to the person in image 1, in similar clothing and a similar setting, with the same type of light and the same framing. Keep his face and appearance from image 2. High quality, detailed face, clothes and background.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Ты в новых образах"><div class="cat">Ты в новых образах</div><h3>6. Переодевание по референсу</h3><p class="att">Приложи: 1) фото человека, 2) фото одежды.</p><pre>Dress the woman from image 1 in the outfit from image 2. Keep her face, hair, pose and body proportions. Show her from the hips up. Background: a European street in summer. Natural fit, realistic fabric folds, matching light and shadows.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Ты в новых образах"><div class="cat">Ты в новых образах</div><h3>7. Замена фона</h3><p class="att">Приложи: 1) фото человека, 2) фото фона.</p><pre>Put the woman from image 1 into the scene from image 2 so that she looks like she was photographed there originally. Match perspective, light and shadow direction to the scene. Keep her face and appearance. Do not change the background beyond fitting her in.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Ты в новых образах"><div class="cat">Ты в новых образах</div><h3>8. Смена сезона и времени суток</h3><p class="att">Приложи: готовое фото.</p><pre>Change only the season and the time of day: make it a snowy winter night before Christmas. Keep the composition, camera angle, people and objects as they are. Change the light, sky, ground and atmosphere, and add falling snow and warm festive lights.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Ты в новых образах"><div class="cat">Ты в новых образах</div><h3>9. Постер супергеройского фильма</h3><p class="att">Приложи: фото каждого, кто будет на постере (только с их согласия). Название можешь заменить своим.</p><pre>Movie poster for a superhero blockbuster titled &quot;НЕЧТО&quot; (exact text, appears once, large metallic title in the lower third). Show the people from the attached photos: the man as a superhero in a black suit without a mask, the others standing slightly behind him. An epic city at dusk behind them, a glowing sky, drifting embers. Cinematic lighting, dramatic composition, vertical 2:3. Keep each person&#x27;s face and appearance recognizable. No other text, no logos.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Ты в новых образах"><div class="cat">Ты в новых образах</div><h3>10. Групповое фото на красной дорожке</h3><p class="att">Приложи: фото каждого участника (с согласия).</p><pre>Photo of all the people from the attached images standing on a red carpet at an evening event in formal evening wear. They look into the camera, smile and hug as a group. Photographers and soft lights in the background. Keep every person&#x27;s face and appearance recognizable. Realistic photograph, natural skin, vertical 4:5.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Реклама"><div class="cat">Реклама</div><h3>Рекламный баннер продукта</h3><p class="att">Приложи фото человека с бутылкой или с твоим продуктом. Бренд ниже вымышленный: подставь свой.</p><pre>Create a modern advertising banner for a carbonated drink called &quot;Citrus Pop&quot;. Use the attached photo: a young stylish woman holding the bottle in a close-up, the bottle as the main accent. The bottle looks cold and fresh with light condensation drops. Make it bright, fresh and premium, like an ad from a big international brand. Add the feeling of flavor coming alive around the bottle: soft citrus splashes, grapefruit slices, pale yellow translucent splashes, a light glow, a summer energy.
+
+Text on the banner (exact, each appears once):
+Headline, large: &quot;Свежесть с первого глотка&quot;
+Subheadline: &quot;Цитрус, лёд и летнее настроение в каждой капле&quot;
+Mini list: &quot;Сочный вкус • Ледяная свежесть • Летний вайб&quot;
+Button: &quot;Попробовать Citrus Pop&quot;
+
+Background: light, juicy, a soft gradient of lime, citrus and warm sunny yellow, slightly blurred behind the text for legibility. Yellow-green and white accents, minimalism, modern typography, premium advertising look, high-end retouch, sharp details, clean layout, realistic product presentation. No other text, no other logos.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Реклама"><div class="cat">Реклама</div><h3>Карточка товара для маркетплейса</h3><p class="att">Можно без референса или приложить фото своего товара. Тексты подставь свои.</p><pre>Create a modern creative product card for a marketplace. In the center, large and sharp, a bright yellow travel suitcase at a slight dynamic angle, shot like a premium advertising photo. It looks new, stylish, durable and expensive.
+
+Style: premium commercial design, clean minimal with bright accents, high-end retouch, professional product photography. Background: white or a very light gradient with a warm sunny tint, with soft abstract lines, smooth waves and graphic trajectories that suggest travel, lightness and freedom. A light glow around the suitcase and a soft realistic shadow so it looks three-dimensional. Palette: yellow as the main accent, plus white, light gray and a little warm orange for depth.
+
+Text in Russian, readable, not overloaded, modern typography:
+Headline: &quot;Чемодан, который видно издалека&quot;
+Benefits:
+1. &quot;Прочный корпус защищает вещи&quot;
+2. &quot;Колёса вращаются на 360°&quot;
+3. &quot;Лёгкий и вместительный&quot;
+Badge: &quot;ХИТ ПРОДАЖ&quot;
+
+The product is the hero, the text never covers the suitcase, the composition is balanced. No people, no extra objects, no extra logos except the logo on the product itself. The result must look like a finished card for Wildberries, Ozon or Yandex Market.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Дизайн"><div class="cat">Дизайн</div><h3>11. Редизайн слайда презентации</h3><p class="att">Приложи: 1) твой слайд, 2) образец стиля.</p><pre>Redesign the slide from image 1 in a modern way: add suitable icons, align the layout and the text, keep a clean minimal style. Take the visual style from image 2. Keep all the original text and its meaning.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Дизайн"><div class="cat">Дизайн</div><h3>12. Копирование стиля текста</h3><p class="att">Приложи: картинку с надписью.</p><pre>Replace the text with &quot;Голубика&quot;, keeping exactly the same lettering style, color, effects and placement as in the original image. Change nothing else.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Дизайн"><div class="cat">Дизайн</div><h3>13. Новый персонаж в заданном стиле</h3><p class="att">Приложи: картинку-образец стиля.</p><pre>In the style of the attached image, draw a female character, waist-up, holding a sword. Match its linework, palette, shading and level of detail. Vertical 2:3. Then, in the same style, a male knight with a battle axe.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Рисованное"><div class="cat">Рисованное</div><h3>14. Герой в стиле другой иллюстрации</h3><p class="att">Приложи: 1) героя, 2) образец стиля (например, мрачная рисованная графика).</p><pre>Redraw the character from image 1 in the illustration style of image 2. Match its colors, proportions, eyes, body parts, linework and other details. Same size as the original.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Рисованное"><div class="cat">Рисованное</div><h3>15. Раскраска для детей</h3><p class="att">Приложи: любую картинку.</p><pre>Turn this picture into a children&#x27;s coloring page: a clean black outline only, medium line thickness, no shadows, no gradients, no gray fills, white background, simple closed shapes that are easy to color.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Рисованное"><div class="cat">Рисованное</div><h3>16. Покраска манги и перевод</h3><p class="att">Приложи: страницу манги (только свою или с правами).</p><pre>Fully color this manga page and translate all the text into Russian. Keep the speech bubbles in the same places and the layout unchanged. The translated text must be legible and fit inside the bubbles.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Рисованное"><div class="cat">Рисованное</div><h3>17. Реставрация фото</h3><p class="att">Приложи: старое или некачественное фото.</p><pre>Restore this photograph: remove damage and noise, sharpen the details, and make it ultra-realistic with natural modern colors. Keep the people&#x27;s faces, clothing and the composition exactly as they are.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Рисованное"><div class="cat">Рисованное</div><h3>18. Разворот детской книги</h3><p class="att">Подставь свою историю вместо скобок.</p><pre>Design a children&#x27;s book spread with text: four illustrations in anime style arranged across two facing pages, each with a short story caption in Russian under it: [paste the four short captions]. Soft bright colors, the same characters in all four illustrations, comfortable margins, large readable text.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Рисованное"><div class="cat">Рисованное</div><h3>19. Страница комикса</h3><p class="att">Приложи: картинки персонажей.</p><pre>Create a comic page of 7 panels with a battle between these characters, Russian text in speech bubbles, and a happy ending. Vertical 3:4. Keep each character&#x27;s design identical in every panel, clear panel borders and a readable reading order.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Поза и скетч"><div class="cat">Поза и скетч</div><h3>20. Референс позы линиями</h3><p class="att">Приложи: фото человека в нужной позе. Получишь схему позы.</p><pre>From this image make a minimal pose-reference illustration using only thin red lines on a white background: a clear body outline and the main joints, even neat lines, no face or clothing details, in the style of a technical anatomical sketch.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Поза и скетч"><div class="cat">Поза и скетч</div><h3>21. Копия позы</h3><p class="att">Приложи: 1) твоё фото, 2) схему позы из прошлого шага.</p><pre>Place the person from image 1 in exactly the pose shown in drawing 2. Keep his face, clothing and the original background. Change only the pose.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Поза и скетч"><div class="cat">Поза и скетч</div><h3>22. Реалистичное фото по скетчу</h3><p class="att">Приложи: свой набросок (или нарисуй в @Sketch).</p><pre>Create a realistic photograph based on this sketch. Preserve the layout, proportions and perspective of the sketch, choose realistic materials and lighting, and add no new elements or text.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Необычные приёмы"><div class="cat">Необычные приёмы</div><h3>23. Точка на карте в фото</h3><p class="att">Приложи: скриншот карты с отмеченной точкой и красной стрелкой направления.</p><pre>Create a realistic street-level photo of the marked point on the map, looking exactly in the direction of the red arrow. Natural colors, correct perspective and realistic details of the place.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Необычные приёмы"><div class="cat">Необычные приёмы</div><h3>24. Инструкция прямо на фото</h3><p class="att">Нарисуй на картинке стрелки и подписи, что изменить. Затем:</p><pre>Follow the instructions written on the photo, then remove all the marks and notes from the final image.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Необычные приёмы"><div class="cat">Необычные приёмы</div><h3>25. Wireframe для сайта</h3><p class="att">Без референса.</p><pre>Make a black-and-white wireframe of the first screen of a psychologist&#x27;s website: a header with a logo and a menu, a hero block with a headline and a button, a short trust block, and simple blocks for services. Thin clean lines, labeled placeholders, desktop layout 16:9.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Дизайн"><div class="cat">Дизайн</div><h3>26. UI-дизайн по прототипу</h3><p class="att">Приложи: 1) свой макет с текстовыми комментариями, 2) по желанию образец стиля.</p><pre>This is a website page layout. Turn it into a high-quality finished UX/UI design following the text comments on the sketch. Add sample images in the matching sections and keep the structure. For the second version, take the visual style from image 2.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Дизайн"><div class="cat">Дизайн</div><h3>27. Красивая диаграмма из данных</h3><p class="att">Подставь свои данные.</p><pre>I have this data: [paste your data]. Make a beautiful modern chart from it. Black background, green accent color, 16:9. Clear labels and values, large readable type, no decorative clutter.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Персонажи"><div class="cat">Персонажи</div><h3>Character sheet: герой со всех сторон</h3><p class="att">Приложи фото человека или картинку персонажа. Получишь лист из 12 ракурсов на белом фоне.</p><pre>From the attached image create a character sheet (turnaround sheet) as a neat collage. Do not describe or change the style: it must match the uploaded image exactly (lighting, textures, realism, materials). Keep the face, proportions, hairstyle, clothing and its materials, and the color palette. The same character must be fully consistent in every view: never change the face, body shape, clothing details or proportions between frames.
+
+Layout: a strict 4 by 3 grid of 12 images, evenly aligned, equal gaps.
+Top row: 1 full body front, 2 full body back, 3 waist-up front, 4 waist-up three-quarter turn.
+Middle row: 5 face front, 6 face three-quarter, 7 face profile, 8 face slightly from above.
+Bottom row: 9 eyes close-up, 10 nose close-up, 11 lips close-up, 12 eyes and nose together, three-quarter.
+
+Requirements: full-body views are never cropped, the character stands straight in a neutral pose with a calm expression, all views are sharp and readable, no perspective distortion, no artistic reinterpretation. The background is pure white (#ffffff), even, with no gradients, textures or extra objects.
+Forbidden: changing the style, adding new details, changing clothes or colors, different faces in different frames, turning it into 3D, an illustration or a render, adding text, captions, logos or graphic elements. This is a clean professional reference sheet, not a poster.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Персонажи"><div class="cat">Персонажи</div><h3>28. Эволюция персонажа в 4 ступени</h3><pre>Step 2. This is the first stage of a character&#x27;s development, there are 4 stages in total. Make the second stage: add fitting details. Keep the pose, drawing style and background. Place the character in the center of the frame.
+
+Step 3. Now the third stage: add fitting details, make the character more epic and more mature. Keep the pose, drawing style and background.
+
+Step 4. Now the fourth and final stage: make the character as epic and mature as possible. Keep the pose, drawing style and background.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+<article class="card" data-cat="Персонажи"><div class="cat">Персонажи</div><h3>29. Эволюция иконки в 4 версии</h3><pre>Step 2. This is a simple first version of a website icon. There are 4 versions in total, each more complex than the previous but in the same style. Make the second version: add fitting details.
+
+Step 3. Now the third version: add fitting details and make it a bit more complex.
+
+Step 4. Now the fourth and final version: make it more complex and as impressive as possible while keeping the style.</pre><button class="copy" type="button">Скопировать промпт</button></article>
+</div>
+
+<h2>Примеры работ автора</h2>
+<div class="gal">
+  <img src="img/a1.webp" alt="Студийный портрет" loading="lazy">
+  <img src="img/a2.webp" alt="Ракурс снизу" loading="lazy">
+  <img src="img/a5.webp" alt="Прыжок в полный рост" loading="lazy">
+</div>
+
+<h2>Домашнее задание</h2>
+<ol class="hw">
+  <li><b>Эмоция.</b> Перенеси мимику с чужого фото на своё (с согласия владельца).</li>
+  <li><b>Новая сцена.</b> Помести себя на другой фон и смени сезон.</li>
+  <li><b>Образ.</b> Переоденься по референсу одежды.</li>
+  <li><b>Постер.</b> Постер фильма с собой в главной роли.</li>
+  <li><b>Поза.</b> Схема позы линиями и копия позы на своём фото.</li>
+  <li><b>9 ракурсов.</b> Сетка 3 на 3 из одного своего фото.</li>
+  <li><b>Character sheet.</b> Лист из 12 ракурсов по своему фото.</li>
+  <li><b>Карусель.</b> Прогони агента для карусели на свою тему.</li>
+</ol>
+<p>Пришли мне результаты, промпты, которые использовал, и 3 строки: что получилось, что нет, чем исправлял.</p>
+
+<div class="cta"><h2 style="margin:0 0 6px">Домашка готова?</h2><div class="word">ФОТО</div><p style="margin:0">Напиши мне в личные сообщения «фото» и пришли материалы. Разберу и дам обратную связь.</p><p style="margin:10px 0 0"><b>@artem.pataga</b></p></div>
+</main>
+<footer>Авторский материал Артёма Патаги, AXEN AI. Не для перепродажи и распространения.</footer>
+
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('.card')),chips=[].slice.call(document.querySelectorAll('.chip')),q=document.getElementById('q'),cat='';
+  function apply(){var s=q.value.trim().toLowerCase();cards.forEach(function(c){var ok=(!cat||c.dataset.cat===cat)&&(!s||c.textContent.toLowerCase().indexOf(s)>-1);c.classList.toggle('hidden',!ok);});}
+  chips.forEach(function(b){b.addEventListener('click',function(){cat=b.dataset.cat;chips.forEach(function(x){x.classList.toggle('on',x===b);});apply();});});
+  q.addEventListener('input',apply);
+  document.querySelectorAll('.copy').forEach(function(b){b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    function ok(){b.textContent='Скопировано';b.classList.add('done');setTimeout(function(){b.textContent='Скопировать промпт';b.classList.remove('done');},1600);}
+    try{navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok);});}catch(e){fb(t,ok);}
+  });});
+  function fb(t,ok){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(e){}document.body.removeChild(a);}
+})();
+</script>
+</body></html>
