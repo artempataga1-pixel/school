@@ -54,7 +54,8 @@ footer{color:var(--muted);font-size:13px;padding:10px 0 40px;text-align:center}
 @media (max-width:760px){.hero{grid-template-columns:1fr}.hero .photo{max-width:260px}}
 .card{position:relative}
 .card .num{position:absolute;top:14px;right:16px;font:700 12px Inter;color:var(--muted)}
-.ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:0 0 12px}
+.ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px;margin:0 0 12px}
+.ex figure:only-child{grid-column:1/-1}
 .ex figure{margin:0}.ex img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block;cursor:zoom-in}
 .zoom{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
 .zoom img{max-width:100%;max-height:100%;border-radius:12px}
